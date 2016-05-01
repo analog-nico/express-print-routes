@@ -1,0 +1,36 @@
+{
+  "name": "express-print-routes",
+  "version": "1.0.0",
+  "description": "Prints the tree of Express routes and middlewares to a file",
+  "keywords": [
+    "endpoint",
+    "endpoints",
+    "express",
+    "middleware",
+    "middlewares",
+    "route",
+    "routes",
+    "tree"
+  ],
+  "homepage": "https://github.com/analog-nico/express-print-routes",
+  "bugs": {
+    "url": "https://github.com/analog-nico/express-print-routes/issues"
+  },
+  "license": "ISC",
+  "author": "Nicolai Kamenzky (https://github.com/analog-nico)",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/analog-nico/express-print-routes.git"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/gulp ci"
+  },
+  "dependencies": {
+    "lodash": "^4.11.1"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "devDependencies": {}
+}
