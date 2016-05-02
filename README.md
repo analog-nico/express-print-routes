@@ -4,7 +4,9 @@ express-print-routes prints the tree of all your [Express](http://expressjs.com)
 
 ## Installation
 
-[![Build Status](https://travis-ci.org/analog-nico/express-print-routes.svg?branch=master)](https://travis-ci.org/analog-nico/express-print-routes) [![Coverage Status](https://coveralls.io/repos/analog-nico/express-print-routes/badge.svg?branch=master&service=github)](https://coveralls.io/github/analog-nico/express-print-routes?branch=master) [![Dependency Status](https://david-dm.org/analog-nico/express-print-routes.svg)](https://david-dm.org/analog-nico/express-print-routes)
+[![Build Status](https://img.shields.io/travis/analog-nico/express-print-routes/master.svg?style=flat-square)](https://travis-ci.org/analog-nico/express-print-routes)
+[![Coverage Status](https://img.shields.io/coveralls/analog-nico/express-print-routes.svg?style=flat-square)](https://coveralls.io/r/analog-nico/express-print-routes)
+[![Dependency Status](https://img.shields.io/david/analog-nico/express-print-routes.svg?style=flat-square)](https://david-dm.org/analog-nico/express-print-routes)
 
 [![NPM Stats](https://nodei.co/npm/express-print-routes.png?downloads=true)](https://npmjs.org/package/express-print-routes)
 
