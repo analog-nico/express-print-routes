@@ -60,6 +60,25 @@ if (process.env.NODE_ENV === 'development') { // Only in dev environment
 }
 ```
 
+Consider giving your middlewares names when they appear as `<anonymous>`. Often, they are added as anonymous functions like this:
+
+``` js
+app.use(function (req, res, next) {
+    console.log('Hello world'!);
+    next();
+});
+```
+
+Give the middleware a name like this:
+
+``` js
+app.use(function __helloWorld(req, res, next) { // <-- '__helloWorld' will be printed now 
+    console.log('Hello world'!);
+    next();
+});
+```
+
+
 ### Why printing to a file and not just to the console?
 
 It is good practice to commit the generated file to your version control system. This way you can review all changes like added / renamed / removed routes and added / removed middlewares.
