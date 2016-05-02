@@ -1,0 +1,6 @@
+router                                                                                                         
+ ├── query                                         *                                                           
+ ├── expressInit                                   *                                                           
+ └── bound dispatch                                /test                                                       GET
+      └── __getTest                                /                                                           GET
+     

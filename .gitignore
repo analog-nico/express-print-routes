@@ -2,4 +2,5 @@
 .idea/
 coverage/
 node_modules/
+test/results/routes.generated.txt
 npm-debug.log
