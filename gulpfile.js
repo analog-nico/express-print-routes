@@ -7,6 +7,7 @@ var mocha = require('gulp-mocha');
 var chalk = require('chalk');
 var rimraf = require('rimraf');
 var coveralls = require('gulp-coveralls');
+var eslint = require('gulp-eslint');
 
 var chai = require("chai");
 global.expect = chai.expect;
@@ -47,10 +48,23 @@ gulp.task('validate', function (done) {
 
 gulp.task('lint', function () {
 
-    //return gulp.src([paths.libJsFiles, paths.gulpfile, paths.specFiles, paths.fixtureFiles])
-    //    .pipe(jshint())
-    //    .pipe(jshint.reporter(jshintStylish))
-    //    .pipe(jshint.reporter('fail'));
+    return gulp.src([paths.libJsFiles, paths.gulpfile, paths.specFiles, paths.fixtureFiles])
+        .pipe(eslint({
+            extends: 'eslint:recommended',
+            rules: {
+                'no-console': 0
+            },
+            envs: [
+                'node'
+            ],
+            globals: {
+                describe: true,
+                it: true,
+                expect: true
+            }
+        }))
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 
 });
 
