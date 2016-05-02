@@ -66,7 +66,7 @@ Consider giving your middlewares names when they appear as `<anonymous>`. Often,
 
 ``` js
 app.use(function (req, res, next) {
-    console.log('Hello world'!);
+    console.log('Hello world!');
     next();
 });
 ```
@@ -75,7 +75,7 @@ Give the middleware a name like this:
 
 ``` js
 app.use(function __helloWorld(req, res, next) { // <-- '__helloWorld' will be printed now 
-    console.log('Hello world'!);
+    console.log('Hello world!');
     next();
 });
 ```
