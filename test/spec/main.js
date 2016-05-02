@@ -35,7 +35,11 @@ describe('The express-print-routes middleware', function () {
 
         setTimeout(function () {
 
-            var expected = fs.readFileSync(path.join(__dirname, '../results/routes.expected.txt'), 'utf8');
+            function getNodeVersionMajor() {
+                return process.versions.node.split('.')[0];
+            }
+
+            var expected = fs.readFileSync(path.join(__dirname, '../results/routes.expected.node' + getNodeVersionMajor() + '.txt'), 'utf8');
             var generated = fs.readFileSync(path.join(__dirname, '../results/routes.generated.txt'), 'utf8');
 
             expect(generated).to.eql(expected);
