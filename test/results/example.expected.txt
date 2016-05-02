@@ -9,6 +9,7 @@ router
  │    │    └── __getUser                           /                                                           GET
  │    │   
  │    └── bound dispatch                           /users/:id                                                  POST
+ │         ├── __checkAccessRights                 /                                                           POST
  │         └── __updateUser                        /                                                           POST
  │        
  │   
