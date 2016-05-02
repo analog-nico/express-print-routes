@@ -56,7 +56,7 @@ describe('The express-print-routes middleware', function () {
         var router = express.Router();
         app.use('/api', router);
         router.get('/users/:id', function __getUser() {});
-        router.post('/users/:id', function __updateUser() {});
+        router.post('/users/:id', function __checkAccessRights() {}, function __updateUser() {});
 
         app.use(function serveStatic() {});
         app.use(function __handleError() {});

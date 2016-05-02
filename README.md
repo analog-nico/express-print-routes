@@ -6,21 +6,22 @@
 
 ```
 router                                                                                                         
- ├── query                        *                                                           
- ├── expressInit                  *                                                           
- ├── logger                       *                                                           
- ├── hpp                          *                                                           
- ├── router                       /^\/api\/?(?=\/|$)/                                         
+ ├── query                            *                                                           
+ ├── expressInit                      *                                                           
+ ├── logger                           *                                                           
+ ├── hpp                              *                                                           
+ ├── router                           /^\/api\/?(?=\/|$)/                                         
  │   router                                                                                                    
- │    ├── bound dispatch          /users/:id               GET
- │    │    └── __getUser          /                        GET
+ │    ├── bound dispatch              /users/:id             GET
+ │    │    └── __getUser              /                      GET
  │    │   
- │    └── bound dispatch          /users/:id               POST
- │         └── __updateUser       /                        POST
+ │    └── bound dispatch              /users/:id             POST
+ │         ├── __checkAccessRights    /                      POST
+ │         └── __updateUser           /                      POST
  │        
  │   
- ├── serveStatic                  *                                                           
- └── __handleError                *                                                           
+ ├── serveStatic                      *                                                           
+ └── __handleError                    *                                                           
 ```
 
 ## Installation
