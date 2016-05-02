@@ -17,7 +17,7 @@ var paths = {
     libJsFiles: './lib/**/*.js',
     gulpfile: './gulpfile.js',
     specFiles: './test/spec/**/*.js',
-    fixtureFiles: './test/fixtures/**/*.js'
+    fixtureFiles: './test/fixtures/**/*.txt'
 };
 
 
@@ -48,7 +48,7 @@ gulp.task('validate', function (done) {
 
 gulp.task('lint', function () {
 
-    return gulp.src([paths.libJsFiles, paths.gulpfile, paths.specFiles, paths.fixtureFiles])
+    return gulp.src([paths.libJsFiles, paths.gulpfile, paths.specFiles])
         .pipe(eslint({
             extends: 'eslint:recommended',
             rules: {

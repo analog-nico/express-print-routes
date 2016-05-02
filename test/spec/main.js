@@ -44,6 +44,9 @@ describe('The express-print-routes middleware', function () {
             .get(function __routedGet() {})
             .post(function __routedChainedPost1() {}, function __routedChainedPost2() {});
 
+        //var routerCaseSensitive = express.Router({ caseSensitive: true });
+        //app.use('/caseSensitive', routerCaseSensitive);
+
 
         printRoutes(app, path.join(__dirname, '../results/routes.generated.txt'));
 
