@@ -99,7 +99,7 @@ If you want to debug a test you should use `gulp test-without-coverage` to run a
 
 ## Change History
 
-- v1.0.0 (upcoming)
+- v1.0.0 (2016-05-01)
     - Initial version
 
 ## License (ISC)
