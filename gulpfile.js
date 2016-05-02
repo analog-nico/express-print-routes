@@ -8,6 +8,7 @@ var chalk = require('chalk');
 var rimraf = require('rimraf');
 var coveralls = require('gulp-coveralls');
 var eslint = require('gulp-eslint');
+var mkdirp = require('mkdirp');
 
 var chai = require("chai");
 global.expect = chai.expect;
@@ -106,8 +107,24 @@ gulp.task('test-without-coverage', function () {
 
 });
 
-gulp.task('clean', function (done) {
+gulp.task('clean', ['clean-coverage', 'clean-results']);
+
+gulp.task('clean-coverage', function (done) {
     rimraf('./coverage', done);
+});
+
+gulp.task('clean-results', function (done) {
+
+    rimraf('./test/results', function (err) {
+
+        if (err) {
+            return done(err);
+        }
+
+        mkdirp('./test/results', done);
+
+    });
+
 });
 
 gulp.task('ci', function (done) {
