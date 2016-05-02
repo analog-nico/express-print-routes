@@ -1,3 +1,7 @@
+[![Build Status](https://img.shields.io/travis/analog-nico/express-print-routes/master.svg?style=flat-square)](https://travis-ci.org/analog-nico/express-print-routes)
+[![Coverage Status](https://img.shields.io/coveralls/analog-nico/express-print-routes.svg?style=flat-square)](https://coveralls.io/r/analog-nico/express-print-routes)
+[![Dependency Status](https://img.shields.io/david/analog-nico/express-print-routes.svg?style=flat-square)](https://david-dm.org/analog-nico/express-print-routes)
+
 # Lost Track of All Your Express Routes And Middlewares?!
 
 Are your `app.use(...)`, `app.METHOD(...)`, `app.route(...)`, and `express.Router()` calls spread across your codebase?
@@ -27,10 +31,6 @@ router
 ```
 
 ## Installation
-
-[![Build Status](https://img.shields.io/travis/analog-nico/express-print-routes/master.svg?style=flat-square)](https://travis-ci.org/analog-nico/express-print-routes)
-[![Coverage Status](https://img.shields.io/coveralls/analog-nico/express-print-routes.svg?style=flat-square)](https://coveralls.io/r/analog-nico/express-print-routes)
-[![Dependency Status](https://img.shields.io/david/analog-nico/express-print-routes.svg?style=flat-square)](https://david-dm.org/analog-nico/express-print-routes)
 
 [![NPM Stats](https://nodei.co/npm/express-print-routes.png?downloads=true)](https://npmjs.org/package/express-print-routes)
 
