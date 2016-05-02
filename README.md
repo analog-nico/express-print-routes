@@ -1,4 +1,4 @@
-# Lost Track of All Your [Express](http://expressjs.com) Routes And Middlewares?!
+# Lost Track of All Your Express Routes And Middlewares?!
 
 express-print-routes prints the tree of all your [Express](http://expressjs.com) routes and middlewares to a file.
 
@@ -18,7 +18,29 @@ npm install express-print-routes --save-dev
 
 ## Usage
 
-Description forthcoming.
+Call express-print-routes after you registered all your routes / middlewares:
+
+``` js
+var app = express();
+
+// Register all your routes / middlewares
+
+
+if (process.env.NODE_ENV === 'development') { // Only in dev environment
+
+    // Absolute path to output file
+    var path = require('path');
+    var filepath = path.join(__dirname, '../docs/routes.generated.txt');
+
+    // Invoke express-print-routes
+    require('express-print-routes')(app, filepath);
+    
+}
+```
+
+### Why printing to a file and not just to the console?
+
+It is good practice to commit the generated file to your version control system. This way you can review all changes made to your routes as well as added / removed middlewares.
 
 ## Contributing
 
