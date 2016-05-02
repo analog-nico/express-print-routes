@@ -2,6 +2,25 @@
 
 express-print-routes prints the tree of all your [Express](http://expressjs.com) routes and middlewares to a file.
 
+```
+router                                                                                                         
+ ├── query                        *                                                           
+ ├── expressInit                  *                                                           
+ ├── logger                       *                                                           
+ ├── hpp                          *                                                           
+ ├── router                       /^\/api\/?(?=\/|$)/                                         
+ │   router                                                                                                    
+ │    ├── bound dispatch          /users/:id               GET
+ │    │    └── __getUser          /                        GET
+ │    │   
+ │    └── bound dispatch          /users/:id               POST
+ │         └── __updateUser       /                        POST
+ │        
+ │   
+ ├── serveStatic                  *                                                           
+ └── __handleError                *                                                           
+```
+
 ## Installation
 
 [![Build Status](https://img.shields.io/travis/analog-nico/express-print-routes/master.svg?style=flat-square)](https://travis-ci.org/analog-nico/express-print-routes)

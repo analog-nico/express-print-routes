@@ -46,4 +46,35 @@ describe('The express-print-routes middleware', function () {
 
     });
 
+    it('should print example in README', function (done) {
+
+        var app = express();
+
+        app.use(function logger() {});
+        app.use(function hpp() {});
+
+        var router = express.Router();
+        app.use('/api', router);
+        router.get('/users/:id', function __getUser() {});
+        router.post('/users/:id', function __updateUser() {});
+
+        app.use(function serveStatic() {});
+        app.use(function __handleError() {});
+
+        printRoutes(app, path.join(__dirname, '../results/example.generated.txt'));
+
+
+        setTimeout(function () {
+
+            var expected = fs.readFileSync(path.join(__dirname, '../results/example.expected.txt'), 'utf8');
+            var generated = fs.readFileSync(path.join(__dirname, '../results/example.generated.txt'), 'utf8');
+
+            expect(generated).to.eql(expected);
+
+            done();
+
+        }, 100);
+
+    });
+
 });
