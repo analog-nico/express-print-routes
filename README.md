@@ -2,6 +2,8 @@
 
 express-print-routes prints the tree of all your [Express](http://expressjs.com) routes and middlewares to a file.
 
+You get this for example:
+
 ```
 router                                                                                                         
  ├── query                        *                                                           
@@ -59,7 +61,7 @@ if (process.env.NODE_ENV === 'development') { // Only in dev environment
 
 ### Why printing to a file and not just to the console?
 
-It is good practice to commit the generated file to your version control system. This way you can review all changes made to your routes as well as added / removed middlewares.
+It is good practice to commit the generated file to your version control system. This way you can review all changes like added / renamed / removed routes and added / removed middlewares.
 
 ## Contributing
 
