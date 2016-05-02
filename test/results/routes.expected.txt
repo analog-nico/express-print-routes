@@ -1,6 +1,70 @@
 router                                                                                                         
  ├── query                                         *                                                           
  ├── expressInit                                   *                                                           
- └── bound dispatch                                /test                                                       GET
-      └── __getTest                                /                                                           GET
+ ├── bound dispatch                                *                                                           CHECKOUT, CONNECT, COPY, DELETE, GET, HEAD, LOCK, M-SEARCH, MERGE, MKACTIVITY, MKCALENDAR, MKCOL, MOVE, NOTIFY, OPTIONS, PATCH, POST, PROPFIND, PROPPATCH, PURGE, PUT, REPORT, SEARCH, SUBSCRIBE, TRACE, UNLOCK, UNSUBSCRIBE
+ │    ├── __starAll                                /                                                           CHECKOUT
+ │    ├── __starAll                                /                                                           CONNECT
+ │    ├── __starAll                                /                                                           COPY
+ │    ├── __starAll                                /                                                           DELETE
+ │    ├── __starAll                                /                                                           GET
+ │    ├── __starAll                                /                                                           HEAD
+ │    ├── __starAll                                /                                                           LOCK
+ │    ├── __starAll                                /                                                           M-SEARCH
+ │    ├── __starAll                                /                                                           MERGE
+ │    ├── __starAll                                /                                                           MKACTIVITY
+ │    ├── __starAll                                /                                                           MKCALENDAR
+ │    ├── __starAll                                /                                                           MKCOL
+ │    ├── __starAll                                /                                                           MOVE
+ │    ├── __starAll                                /                                                           NOTIFY
+ │    ├── __starAll                                /                                                           OPTIONS
+ │    ├── __starAll                                /                                                           PATCH
+ │    ├── __starAll                                /                                                           POST
+ │    ├── __starAll                                /                                                           PROPFIND
+ │    ├── __starAll                                /                                                           PROPPATCH
+ │    ├── __starAll                                /                                                           PURGE
+ │    ├── __starAll                                /                                                           PUT
+ │    ├── __starAll                                /                                                           REPORT
+ │    ├── __starAll                                /                                                           SEARCH
+ │    ├── __starAll                                /                                                           SUBSCRIBE
+ │    ├── __starAll                                /                                                           TRACE
+ │    ├── __starAll                                /                                                           UNLOCK
+ │    └── __starAll                                /                                                           UNSUBSCRIBE
+ │   
+ ├── bound dispatch                                /                                                           GET
+ │    └── __rootGet                                /                                                           GET
+ │   
+ ├── bound dispatch                                /test                                                       GET
+ │    └── __testGet                                /                                                           GET
+ │   
+ ├── bound dispatch                                /test/:param                                                POST
+ │    └── __testParamPost                          /                                                           POST
+ │   
+ ├── bound dispatch                                /^\/spa($|\/)/                                              GET
+ │    └── __spaRegexGet                            /                                                           GET
+ │   
+ ├── bound dispatch                                /chained                                                    GET
+ │    ├── __chainedGet1                            /                                                           GET
+ │    └── __chainedGet2                            /                                                           GET
+ │   
+ └── router                                        /^\/routed\/?(?=\/|$)/                                      
+     router                                                                                                    
+      ├── bound dispatch                           *                                                           _ALL
+      │    └── __routedStarAll                     /                                                           
+      │   
+      ├── bound dispatch                           /                                                           GET
+      │    └── __routedRootGet                     /                                                           GET
+      │   
+      ├── bound dispatch                           /test                                                       GET
+      │    └── __routedTestGet                     /                                                           GET
+      │   
+      ├── bound dispatch                           /test/:param                                                POST
+      │    └── __routedTestParamPost               /                                                           POST
+      │   
+      ├── bound dispatch                           /^\/spa($|\/)/                                              GET
+      │    └── __routedSpaRegexGet                 /                                                           GET
+      │   
+      └── bound dispatch                           /chained                                                    GET
+           ├── __routedChainedGet1                 /                                                           GET
+           └── __routedChainedGet2                 /                                                           GET
+          
      
