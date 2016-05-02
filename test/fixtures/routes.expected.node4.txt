@@ -36,7 +36,7 @@ router
  ├── bound dispatch                                /test                                                       GET
  │    └── __testGet                                /                                                           GET
  │   
- ├── bound dispatch                                /test/:param                                                POST
+ ├── bound dispatch                                /test/:testId                                               POST
  │    └── __testParamPost                          /                                                           POST
  │   
  ├── bound dispatch                                /^\/spa($|\/)/                                              GET
@@ -46,25 +46,42 @@ router
  │    ├── __chainedGet1                            /                                                           GET
  │    └── __chainedGet2                            /                                                           GET
  │   
- └── router                                        /^\/routed\/?(?=\/|$)/                                      
-     router                                                                                                    
-      ├── bound dispatch                           *                                                           _ALL
-      │    └── __routedStarAll                     /                                                           
-      │   
-      ├── bound dispatch                           /                                                           GET
-      │    └── __routedRootGet                     /                                                           GET
-      │   
-      ├── bound dispatch                           /test                                                       GET
-      │    └── __routedTestGet                     /                                                           GET
-      │   
-      ├── bound dispatch                           /test/:param                                                POST
-      │    └── __routedTestParamPost               /                                                           POST
-      │   
-      ├── bound dispatch                           /^\/spa($|\/)/                                              GET
-      │    └── __routedSpaRegexGet                 /                                                           GET
-      │   
-      └── bound dispatch                           /chained                                                    GET
-           ├── __routedChainedGet1                 /                                                           GET
-           └── __routedChainedGet2                 /                                                           GET
-          
+ ├── __useUse                                      /^\/use\/?(?=\/|$)/                                         
+ ├── router                                        /^\/routedWithRouter\/?(?=\/|$)/                            
+ │   router                                                                                                    
+ │    ├── bound dispatch                           *                                                           _ALL
+ │    │    └── __routedStarAll                     /                                                           
+ │    │   
+ │    ├── bound dispatch                           /                                                           GET
+ │    │    └── __routedRootGet                     /                                                           GET
+ │    │   
+ │    ├── bound dispatch                           /test                                                       GET
+ │    │    └── __routedTestGet                     /                                                           GET
+ │    │   
+ │    ├── bound dispatch                           /test/:testId                                               POST
+ │    │    └── __routedTestParamPost               /                                                           POST
+ │    │   
+ │    ├── bound dispatch                           /^\/spa($|\/)/                                              GET
+ │    │    └── __routedSpaRegexGet                 /                                                           GET
+ │    │   
+ │    ├── bound dispatch                           /chained                                                    GET
+ │    │    ├── __routedChainedGet1                 /                                                           GET
+ │    │    └── __routedChainedGet2                 /                                                           GET
+ │    │   
+ │    ├── __routedUseUse                           /^\/use\/?(?=\/|$)/                                         
+ │    └── bound dispatch                           /routedWithDotRoute                                         _ALL, GET
+ │         ├── __routedAll                         /                                                           
+ │         ├── __routedChainedGet1                 /                                                           GET
+ │         └── __routedChainedGet2                 /                                                           GET
+ │        
+ │   
+ ├── bound dispatch                                /routedWithDotRoute                                         _ALL, GET
+ │    ├── __routedAll                              /                                                           
+ │    ├── __routedChainedGet1                      /                                                           GET
+ │    └── __routedChainedGet2                      /                                                           GET
+ │   
+ └── bound dispatch                                /^\/routedWithDotRouteAndRegex($|\/)/                       GET, POST
+      ├── __routedGet                              /                                                           GET
+      ├── __routedChainedPost1                     /                                                           POST
+      └── __routedChainedPost2                     /                                                           POST
      
