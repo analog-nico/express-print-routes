@@ -45,7 +45,7 @@ npm install express-print-routes --save-dev
 Call `express-print-routes` after you registered all your routes / middlewares:
 
 ``` js
-var app = express();
+var app = express()
 
 // Register all your routes / middlewares
 
@@ -53,11 +53,11 @@ var app = express();
 if (process.env.NODE_ENV === 'development') { // Only in dev environment
 
     // Absolute path to output file
-    var path = require('path');
-    var filepath = path.join(__dirname, '../docs/routes.generated.txt');
+    var path = require('path')
+    var filepath = path.join(__dirname, '../docs/routes.generated.txt')
 
     // Invoke express-print-routes
-    require('express-print-routes')(app, filepath);
+    require('express-print-routes')(app, filepath)
     
 }
 ```
@@ -66,18 +66,18 @@ Consider giving your middlewares names when they appear as `<anonymous>`. Often,
 
 ``` js
 app.use(function (req, res, next) {
-    console.log('Hello world!');
-    next();
-});
+    console.log('Hello world!')
+    next()
+})
 ```
 
 Give the middleware a name like this:
 
 ``` js
 app.use(function __helloWorld(req, res, next) { // <-- '__helloWorld' will be printed now 
-    console.log('Hello world!');
-    next();
-});
+    console.log('Hello world!')
+    next()
+})
 ```
 
 

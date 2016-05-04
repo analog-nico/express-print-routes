@@ -1,30 +1,30 @@
-'use strict';
+'use strict'
 
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var istanbul = require('gulp-istanbul');
-var mocha = require('gulp-mocha');
-var chalk = require('chalk');
-var rimraf = require('rimraf');
-var coveralls = require('gulp-coveralls');
-var eslint = require('gulp-eslint');
-var mkdirp = require('mkdirp');
+let gulp = require('gulp')
+let runSequence = require('run-sequence')
+let istanbul = require('gulp-istanbul')
+let mocha = require('gulp-mocha')
+let chalk = require('chalk')
+let rimraf = require('rimraf')
+let coveralls = require('gulp-coveralls')
+let eslint = require('gulp-eslint')
+let mkdirp = require('mkdirp')
 
-var chai = require("chai");
-global.expect = chai.expect;
+let chai = require("chai")
+global.expect = chai.expect
 
 
-var paths = {
+let paths = {
     libJsFiles: './lib/**/*.js',
     gulpfile: './gulpfile.js',
     specFiles: './test/spec/**/*.js',
     fixtureFiles: './test/fixtures/**/*.txt'
-};
+}
 
 
-gulp.task('dev', ['watch', 'validate']);
+gulp.task('dev', ['watch', 'validate'])
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
 
     gulp.watch([
         paths.libJsFiles,
@@ -33,109 +33,86 @@ gulp.task('watch', function () {
         paths.fixtureFiles
     ], [
         'validate'
-    ]);
+    ])
 
     gulp.watch([
         paths.gulpfile
     ], [
         'lint'
-    ]);
+    ])
 
-});
+})
 
-gulp.task('validate', function (done) {
-    runSequence('lint', 'test', done);
-});
+gulp.task('validate', (done) => runSequence('lint', 'test', done))
 
-gulp.task('lint', function () {
+gulp.task('lint', () => {
 
     return gulp.src([paths.libJsFiles, paths.gulpfile, paths.specFiles])
-        .pipe(eslint({
-            extends: 'eslint:recommended',
-            rules: {
-                'no-console': 0
-            },
-            envs: [
-                'node'
-            ],
-            globals: {
-                describe: true,
-                it: true,
-                expect: true
-            }
-        }))
+        .pipe(eslint())
         .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+        .pipe(eslint.failAfterError())
 
-});
+})
 
-gulp.task('test', ['clean'], function (done) {
+gulp.task('test', ['clean'], (done) => {
 
-    var coverageVariable = '$$cov_' + new Date().getTime() + '$$';
+    let coverageVariable = `$$cov_${ new Date().getTime() }$$`
 
     gulp.src(paths.libJsFiles)
         .pipe(istanbul({
-            coverageVariable: coverageVariable
+            coverageVariable
         }))
         .pipe(istanbul.hookRequire())
-        .on('finish', function () {
+        .on('finish', () => {
 
             gulp.src(paths.specFiles)
                 .pipe(mocha())
-                .on('error', function (err) {
-                    console.error(String(err));
-                    console.error(chalk.bold.bgRed(' TESTS FAILED '));
-                    done(new Error(' TESTS FAILED '));
+                .on('error', (err) => {
+                    console.error(String(err))
+                    console.error(chalk.bold.bgRed(' TESTS FAILED '))
+                    done(new Error(' TESTS FAILED '))
                 })
                 .pipe(istanbul.writeReports({
                     reporters: ['lcov'],
-                    coverageVariable: coverageVariable
+                    coverageVariable
                 }))
-                .on('end', done);
+                .on('end', done)
 
-        });
+        })
 
-});
+})
 
-gulp.task('test-without-coverage', function () {
+gulp.task('test-without-coverage', () => {
 
     return gulp.src(paths.specFiles)
         .pipe(mocha())
-        .on('error', function () {
-            console.log(chalk.bold.bgRed(' TESTS FAILED '));
-        });
+        .on('error', () => console.log(chalk.bold.bgRed(' TESTS FAILED ')))
 
-});
+})
 
-gulp.task('clean', ['clean-coverage', 'clean-results']);
+gulp.task('clean', ['clean-coverage', 'clean-results'])
 
-gulp.task('clean-coverage', function (done) {
-    rimraf('./coverage', done);
-});
+gulp.task('clean-coverage', (done) => rimraf('./coverage', done))
 
-gulp.task('clean-results', function (done) {
+gulp.task('clean-results', (done) => {
 
-    rimraf('./test/results', function (err) {
+    rimraf('./test/results', (err) => {
 
         if (err) {
-            return done(err);
+            return done(err)
         }
 
-        mkdirp('./test/results', done);
+        mkdirp('./test/results', done)
 
-    });
+    })
 
-});
+})
 
-gulp.task('ci', function (done) {
-    runSequence('validate', 'coveralls', 'test-without-coverage', done);
-});
+gulp.task('ci', (done) => runSequence('validate', 'coveralls', 'test-without-coverage', done))
 
-gulp.task('ci-no-cov', function (done) {
-    runSequence('validate', 'test-without-coverage', done);
-});
+gulp.task('ci-no-cov', (done) => runSequence('validate', 'test-without-coverage', done))
 
-gulp.task('coveralls', function () {
+gulp.task('coveralls', () => {
     return gulp.src('coverage/**/lcov.info')
-        .pipe(coveralls());
-});
+        .pipe(coveralls())
+})
