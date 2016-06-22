@@ -76,7 +76,7 @@ gulp.task('test', ['clean'], (done) => {
                     reporters: ['lcov'],
                     coverageVariable
                 }))
-                .on('end', done)
+                .on('end', () => done())
 
         })
 
