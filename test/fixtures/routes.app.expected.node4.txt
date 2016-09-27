@@ -1,13 +1,16 @@
 router                                                                                                         
  ├── query                                         *                                                           
  ├── expressInit                                   *                                                           
- ├── bound dispatch                                *                                                           CHECKOUT, CONNECT, COPY, DELETE, GET, HEAD, LOCK, M-SEARCH, MERGE, MKACTIVITY, MKCALENDAR, MKCOL, MOVE, NOTIFY, OPTIONS, PATCH, POST, PROPFIND, PROPPATCH, PURGE, PUT, REPORT, SEARCH, SUBSCRIBE, TRACE, UNLOCK, UNSUBSCRIBE
+ ├── bound dispatch                                *                                                           ACL, BIND, CHECKOUT, CONNECT, COPY, DELETE, GET, HEAD, LINK, LOCK, M-SEARCH, MERGE, MKACTIVITY, MKCALENDAR, MKCOL, MOVE, NOTIFY, OPTIONS, PATCH, POST, PROPFIND, PROPPATCH, PURGE, PUT, REBIND, REPORT, SEARCH, SUBSCRIBE, TRACE, UNBIND, UNLINK, UNLOCK, UNSUBSCRIBE
+ │    ├── __starAll                                /                                                           ACL
+ │    ├── __starAll                                /                                                           BIND
  │    ├── __starAll                                /                                                           CHECKOUT
  │    ├── __starAll                                /                                                           CONNECT
  │    ├── __starAll                                /                                                           COPY
  │    ├── __starAll                                /                                                           DELETE
  │    ├── __starAll                                /                                                           GET
  │    ├── __starAll                                /                                                           HEAD
+ │    ├── __starAll                                /                                                           LINK
  │    ├── __starAll                                /                                                           LOCK
  │    ├── __starAll                                /                                                           M-SEARCH
  │    ├── __starAll                                /                                                           MERGE
@@ -23,10 +26,13 @@ router
  │    ├── __starAll                                /                                                           PROPPATCH
  │    ├── __starAll                                /                                                           PURGE
  │    ├── __starAll                                /                                                           PUT
+ │    ├── __starAll                                /                                                           REBIND
  │    ├── __starAll                                /                                                           REPORT
  │    ├── __starAll                                /                                                           SEARCH
  │    ├── __starAll                                /                                                           SUBSCRIBE
  │    ├── __starAll                                /                                                           TRACE
+ │    ├── __starAll                                /                                                           UNBIND
+ │    ├── __starAll                                /                                                           UNLINK
  │    ├── __starAll                                /                                                           UNLOCK
  │    └── __starAll                                /                                                           UNSUBSCRIBE
  │   
