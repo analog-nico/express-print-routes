@@ -48,7 +48,7 @@ describe('The express-print-routes middleware', () => {
         //app.use('/caseSensitive', routerCaseSensitive)
 
 
-        printRoutes(app, path.join(__dirname, '../results/routes.generated.txt'))
+        printRoutes(app, path.join(__dirname, '../results/routes.app.generated.txt'))
 
 
         setTimeout(() => {
@@ -57,8 +57,39 @@ describe('The express-print-routes middleware', () => {
                 return process.versions.node.split('.')[0]
             }
 
-            let expected = fs.readFileSync(path.join(__dirname, `../fixtures/routes.expected.node${ getNodeVersionMajor() }.txt`), 'utf8')
-            let generated = fs.readFileSync(path.join(__dirname, '../results/routes.generated.txt'), 'utf8')
+            let expected = fs.readFileSync(path.join(__dirname, `../fixtures/routes.app.expected.node${ getNodeVersionMajor() }.txt`), 'utf8')
+            let generated = fs.readFileSync(path.join(__dirname, '../results/routes.app.generated.txt'), 'utf8')
+
+            expect(generated).to.eql(expected)
+
+            done()
+
+        }, 100)
+
+    })
+
+    it('should print for a Router', (done) => {
+
+        let router = express.Router()
+        router.all('*', function __routedStarAll() {})
+        router.get('/', function __routedRootGet() {})
+        router.get('/test', function __routedTestGet() {})
+        //router.param('testId', function __routedTestIdParam() {})
+        router.post('/test/:testId', function __routedTestParamPost() {})
+        router.get(/^\/spa($|\/)/, function __routedSpaRegexGet() {})
+        router.get('/chained', function __routedChainedGet1() {}, function __routedChainedGet2() {})
+        router.use('/use', function __routedUseUse() {})
+        router.route('/routedWithDotRoute')
+            .all(function __routedAll() {})
+            .get(function __routedChainedGet1() {}, function __routedChainedGet2() {})
+
+        // FIXME: printRoutes should take router directly
+        printRoutes({ _router: router }, path.join(__dirname, '../results/routes.router.generated.txt'))
+
+        setTimeout(() => {
+
+            let expected = fs.readFileSync(path.join(__dirname, '../fixtures/routes.router.expected.txt'), 'utf8')
+            let generated = fs.readFileSync(path.join(__dirname, '../results/routes.router.generated.txt'), 'utf8')
 
             expect(generated).to.eql(expected)
 

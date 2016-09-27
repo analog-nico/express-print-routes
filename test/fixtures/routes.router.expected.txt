@@ -1,0 +1,26 @@
+router                                                                                                         
+ ├── bound dispatch                                *                                                           _ALL
+ │    └── __routedStarAll                          /                                                           
+ │   
+ ├── bound dispatch                                /                                                           GET
+ │    └── __routedRootGet                          /                                                           GET
+ │   
+ ├── bound dispatch                                /test                                                       GET
+ │    └── __routedTestGet                          /                                                           GET
+ │   
+ ├── bound dispatch                                /test/:testId                                               POST
+ │    └── __routedTestParamPost                    /                                                           POST
+ │   
+ ├── bound dispatch                                /^\/spa($|\/)/                                              GET
+ │    └── __routedSpaRegexGet                      /                                                           GET
+ │   
+ ├── bound dispatch                                /chained                                                    GET
+ │    ├── __routedChainedGet1                      /                                                           GET
+ │    └── __routedChainedGet2                      /                                                           GET
+ │   
+ ├── __routedUseUse                                /^\/use\/?(?=\/|$)/                                         
+ └── bound dispatch                                /routedWithDotRoute                                         _ALL, GET
+      ├── __routedAll                              /                                                           
+      ├── __routedChainedGet1                      /                                                           GET
+      └── __routedChainedGet2                      /                                                           GET
+     
