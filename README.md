@@ -4,7 +4,7 @@
 
 # Lost Track of All Your Express Routes And Middlewares?!
 
-Are your `app.use(...)`, `app.METHOD(...)`, `app.route(...)`, and `express.Router()` calls spread across your codebase?
+Are your `app.use(...)`, `app.METHOD(...)`, `app.route(...)`, and `express.Router()` calls spread across your codebase and it’s starting to get difficult to keep track of them all?
 
 `express-print-routes` prints the tree of all your [Express](http://expressjs.com) routes and middlewares to a file.
 
