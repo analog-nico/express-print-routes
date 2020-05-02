@@ -25,10 +25,13 @@
     "url": "https://github.com/analog-nico/express-print-routes.git"
   },
   "scripts": {
-    "test": "node_modules/.bin/gulp ci"
+    "test": "node_modules/.bin/gulp ci",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
-    "lodash": "^4.11.1"
+    "lodash": "^4.11.1",
+    "snyk": "^1.316.2"
   },
   "peerDependencies": {
     "express": "^4"
@@ -48,5 +51,6 @@
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.2",
     "run-sequence": "^1.1.5"
-  }
+  },
+  "snyk": true
 }
